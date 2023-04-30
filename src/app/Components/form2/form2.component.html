@@ -1,0 +1,64 @@
+<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Informacion Vehiculo</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Marca" formControlName="marca">
+              <mat-option *ngFor="let marca of marcas" [value]="marca.name">
+                {{ marca.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="addressForm.controls['marca'].hasError('required')">
+              Marca is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Modelo" formControlName="modelo">
+              <mat-option *ngFor="let modelo of modelos" [value]="modelo.name">
+                {{ modelo.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="addressForm.controls['modelo'].hasError('required')">
+              Modelo is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Color" formControlName="color">
+            <mat-error *ngIf="addressForm.controls['color'].hasError('maxlength')">
+              Maximo <strong>50</strong> caracteres
+            </mat-error>
+            <mat-error *ngIf="addressForm.controls['color'].hasError('required')">
+              Color is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Placa" formControlName="placa">
+            <mat-error *ngIf="addressForm.controls['placa'].hasError('pattern')">
+              Placa invalida <strong>Ejemplo: ABC-123, abc-123, abc123 ó ABC123</strong>
+            </mat-error>
+            <mat-error *ngIf="addressForm.controls['placa'].hasError('required')">
+              Placa is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Enviar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

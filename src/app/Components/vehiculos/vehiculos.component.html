@@ -1,0 +1,7 @@
+<div class="margen">
+    <h1>{{title}}</h1>
+        <div class="boton">
+            <button mat-raised-button color="primary" (click)="openModal()">Nuevo vehiculo</button>
+        </div>
+        <app-table-template [service]="service" [title]="service" [displayedColumns]="displayedColumns" [column]="column" [dataSource]="dataSource"></app-table-template>
+  </div>
